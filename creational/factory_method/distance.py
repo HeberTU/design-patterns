@@ -16,9 +16,9 @@ class Distance(ABC):
 
      Declare the common operation of all concrete distances must implement.
      """
-
+    @staticmethod
     @abstractmethod
-    def calculate(self, x: np.ndarray, y: np.ndarray) -> float:
+    def calculate( x: np.ndarray, y: np.ndarray) -> float:
         """Calculate the distance between two points.
 
         Args:
@@ -34,7 +34,8 @@ class Distance(ABC):
 class EuclideanDistance(Distance):
     """Euclidian distance."""
 
-    def calculate(self, x: np.ndarray, y: np.ndarray) -> float:
+    @staticmethod
+    def calculate(x: np.ndarray, y: np.ndarray) -> float:
         """Calculate the euclidian distance between two points.
 
         Formula:
@@ -59,7 +60,8 @@ class EuclideanDistance(Distance):
 class ManhattanDistance(Distance):
     """Cosine distance."""
 
-    def calculate(self, x: np.ndarray, y: np.ndarray) -> float:
+    @staticmethod
+    def calculate(x: np.ndarray, y: np.ndarray) -> float:
         """Calculate the manhattan distance between two points.
 
         Args:
