@@ -32,9 +32,18 @@ def client_code(
 
 
 if __name__ == '__main__':
+    print("App configuration: City Taximeter.")
     cost = client_code(
         ride_calculator=taximeter.CityTaximeter(),
-        x=[1, 2],
-        y=[1, 3],
+        x=np.array([0, 0]),
+        y=np.array([1, 1]),
+    )
+    print(cost)
+
+    print("App configuration: Rural Taximeter.")
+    cost = client_code(
+        ride_calculator=taximeter.RuralTaximeter(),
+        x=np.array([0, 0]),
+        y=np.array([1, 1]),
     )
     print(cost)
