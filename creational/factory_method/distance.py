@@ -56,11 +56,11 @@ class EuclideanDistance(Distance):
         return dist
 
 
-class CosineDistance(Distance):
+class ManhattanDistance(Distance):
     """Cosine distance."""
 
     def calculate(self, x: np.ndarray, y: np.ndarray) -> float:
-        """Calculate the cosine distance between two points.
+        """Calculate the manhattan distance between two points.
 
         Args:
             x: data point.
@@ -69,6 +69,6 @@ class CosineDistance(Distance):
         Returns:
             dist: distance between point x and y.
         """
-        dist = np.dot(x.T, y)/(np.linalg.norm(x) * np.linalg.norm(y))
+        dist = sum(abs(val1-val2) for val1, val2 in zip(x, y))
 
         return dist
