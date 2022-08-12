@@ -45,11 +45,11 @@ def _shape_data(
     """Shape the data into a matrix format.
 
     Args:
-        shape:
-        *args:
+        shape: matrix shape.
+        data: data to feed the matrix.
 
     Returns:
-
+        _data: data in the right format.
     """
     if shape[0] * shape[1] != len(data):
         raise ValueError("Shape is not compatible.")
