@@ -6,10 +6,31 @@ category = "main"
 optional = false
 python-versions = ">=3.8"
 
+[[package]]
+name = "torch"
+version = "1.12.1"
+description = "Tensors and Dynamic neural networks in Python with strong GPU acceleration"
+category = "main"
+optional = false
+python-versions = ">=3.7.0"
+
+[package.dependencies]
+typing-extensions = "*"
+
+[[package]]
+name = "typing-extensions"
+version = "4.3.0"
+description = "Backported and Experimental Type Hints for Python 3.7+"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "30554b4f4deb485705596cf55e6b9e3c3f13bdd09b1b80e19aad693e89d91fa0"
+content-hash = "c1226792c7dd6b57ea7f806fe31fb5e2b5326d0dab91db9d192eb3f581d1bf00"
 
 [metadata.files]
 numpy = []
+torch = []
+typing-extensions = []
