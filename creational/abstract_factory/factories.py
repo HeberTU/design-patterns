@@ -8,7 +8,12 @@ Licence,
 from __future__ import annotations
 from abc import ABC, abstractmethod
 
-from creational.abstract_factory import vectors
+from typing import Tuple, Union, List
+
+from creational.abstract_factory import (
+    vectors,
+    matrices
+)
 
 
 class AbstractFactory(ABC):
@@ -19,6 +24,13 @@ class AbstractFactory(ABC):
     @abstractmethod
     def create_vector(self) -> vectors.Vector:
         """Create a vector instance."""
+        pass
+
+    @abstractmethod
+    def create_matrix(
+        self, shape: Tuple[int, int], data: List[Union[int, float]]
+    ) -> matrices.Matrix:
+        """Create a matrix instance."""
         pass
 
 
@@ -33,6 +45,20 @@ class NumpyFactory(AbstractFactory):
         """
         return vectors.NumpyVector(args)
 
+    def create_matrix(
+        self, shape: Tuple[int, int], data: List[Union[int, float]]
+    ) -> matrices.NumpyMatrix:
+        """Create an instance of numpy matrix.
+
+        Args:
+            shape: matrix shape.
+            data: data to feed the matrix.
+
+        Returns:
+
+        """
+        return matrices.NumpyMatrix(shape, data)
+
 
 class TorchFactory(AbstractFactory):
     """Torch factory."""
@@ -44,3 +70,17 @@ class TorchFactory(AbstractFactory):
             vector: one-dimensional vector.
         """
         return vectors.TorchVector(args)
+
+    def create_matrix(
+        self, shape: Tuple[int, int], data: List[Union[int, float]]
+    ) -> matrices.TensorMatrix:
+        """Create an instance of tensor matrix.
+
+        Args:
+            shape: matrix shape.
+            data: data to feed the matrix.
+
+        Returns:
+
+        """
+        return matrices.TensorMatrix(shape, data)
