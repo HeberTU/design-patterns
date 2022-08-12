@@ -19,11 +19,12 @@ class Vector(ABC):
     @abstractmethod
     def dot_product(self, other: Vector):
         """Perform dot product between two vectors."""
+        raise NotImplementedError()
 
     @property
-    def data(self) -> List[Union[float, int]]:
+    def data(self) -> List[float]:
         """Get vector data."""
-        return list(self._data)
+        return [float(x) for x in self._data]
 
     def __repr__(self) -> str:
         """Get human-readable representation"""
@@ -41,7 +42,7 @@ class NumpyVector(Vector):
         Args:
             *args: Numeric iterable from which the vector will be created.
         """
-        self._data = np.array(args)
+        self._data = np.array(*args)
 
     def dot_product(self, other: NumpyVector) -> float:
         """Perform dot product between two one-dimensional vectors.
@@ -78,7 +79,3 @@ class TorchVector(Vector):
         """
         return sum(self._data * self._data)
 
-    @property
-    def data(self) -> List[float]:
-        """Get vector data."""
-        return [float(x) for x in self._data]
