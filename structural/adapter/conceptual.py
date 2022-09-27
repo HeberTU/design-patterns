@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-
-Created on: 27/9/22
-@author: Heber Trujillo <heber.trj.urt@gmail.com>
-Licence,
-"""
-
 class Target:
     """
     The Target defines the domain-specific interface used by the client code.
@@ -26,17 +18,20 @@ class Adaptee:
         return ".eetpadA eht fo roivaheb laicepS"
 
 
-class Adapter(Target, Adaptee):
+class Adapter(Target):
     """
     The Adapter makes the Adaptee's interface compatible with the Target's
-    interface via multiple inheritance.
+    interface via composition.
     """
 
+    def __init__(self, adaptee: Adaptee) -> None:
+        self.adaptee = adaptee
+
     def request(self) -> str:
-        return f"Adapter: (TRANSLATED) {self.specific_request()[::-1]}"
+        return f"Adapter: (TRANSLATED) {self.adaptee.specific_request()[::-1]}"
 
 
-def client_code(target: "Target") -> None:
+def client_code(target: Target) -> None:
     """
     The client code supports all classes that follow the Target interface.
     """
@@ -56,5 +51,5 @@ if __name__ == "__main__":
     print(f"Adaptee: {adaptee.specific_request()}", end="\n\n")
 
     print("Client: But I can work with it via the Adapter:")
-    adapter = Adapter()
+    adapter = Adapter(adaptee)
     client_code(adapter)
