@@ -7,7 +7,7 @@ Created on: 28/9/22
 @author: Heber Trujillo <heber.trj.urt@gmail.com>
 Licence,
 """
-from typing import Dict
+from typing import Dict, List
 
 
 class LinearModel:
@@ -23,7 +23,7 @@ class LinearModel:
         self.slope = slope
         self.intercept = intercept
 
-    def predict(self, data: Dict[str, float]) -> float:
+    def predict(self, data: Dict[str, List[float]]) -> float:
         """Generate a prediction.
 
         Args:
@@ -32,11 +32,11 @@ class LinearModel:
         Returns:
             prediction: data predicted.
         """
-        y = data.get('y', None)
+        Y = data.get('y', None)
 
-        if not y:
+        if not Y:
             raise ValueError("Inferece data is incorrect.")
 
-        return self.slope * y +self.intercept
+        return [self.slope * y + self.intercept for y in Y]
 
 
