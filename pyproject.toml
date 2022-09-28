@@ -9,6 +9,7 @@ license = "MIT License"
 python = "^3.8"
 numpy = "^1.23.1"
 torch = "^1.12.1"
+pandas = "^1.5.0"
 
 [tool.poetry.dev-dependencies]
 
