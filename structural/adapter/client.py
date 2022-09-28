@@ -53,6 +53,7 @@ def assign_action(df: pd.DataFrame, adapter: Adapter) -> pd.DataFrame:
 
     Args:
         df: data frame containing the sensor data.
+        adapter: adapter class.
 
     Returns:
         df: data frame containing the sensor data with their assigned actions.
